@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="80dp"
     android:orientation="horizontal"
-    android:padding="16dp">
+    android:padding="12dp">
 
     <ImageView
         android:id="@+id/currency_image_view"
@@ -34,18 +34,40 @@
         android:layout_height="wrap_content"
         android:layout_marginEnd="8dp"
         app:layout_constraintBottom_toBottomOf="@+id/currency_text_view"
-        app:layout_constraintEnd_toStartOf="@+id/imageView"
+        app:layout_constraintEnd_toStartOf="@+id/chaos_image_view"
         app:layout_constraintTop_toTopOf="@+id/currency_text_view"
         app:layout_constraintVertical_bias="0.0"
         tools:text="99999" />
 
     <ImageView
-        android:id="@+id/imageView"
+        android:id="@+id/chaos_image_view"
         android:layout_width="24dp"
         android:layout_height="24dp"
         app:layout_constraintBottom_toBottomOf="@+id/currency_price"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="@+id/currency_price"
-        app:srcCompat="@drawable/chaos_pic" />
+        app:srcCompat="@drawable/chaos_pic"
+        android:contentDescription="@string/chaos_image_view_description" />
+
+    <TextView
+        android:id="@+id/currency_change_text_view"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="8dp"
+        app:layout_constraintBottom_toBottomOf="@+id/currency_price"
+        app:layout_constraintEnd_toStartOf="@+id/currency_price"
+        app:layout_constraintTop_toTopOf="@+id/currency_price"
+        app:layout_constraintVertical_bias="0.0"
+        tools:text="15%" />
+
+    <ImageView
+        android:id="@+id/currency_change_arrow_image_view"
+        android:layout_width="24dp"
+        android:layout_height="24dp"
+        android:tint="@color/colorAccent"
+        app:layout_constraintBottom_toBottomOf="@+id/currency_change_text_view"
+        app:layout_constraintEnd_toStartOf="@+id/currency_change_text_view"
+        app:layout_constraintTop_toTopOf="@+id/currency_change_text_view"
+        android:contentDescription="@string/currency_change_arrow_description" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

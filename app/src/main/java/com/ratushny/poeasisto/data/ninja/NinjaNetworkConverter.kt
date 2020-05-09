@@ -9,11 +9,12 @@ interface NinjaNetworkConverter {
 
 class NinjaNetworkConverterImpl : NinjaNetworkConverter {
     override fun convertCurrencyList(response: NinjaCurrencyResponse): List<NinjaCurrency>? =
-        response.lines.map { dtoList ->
+        response.lines.map { dtoData ->
             NinjaCurrency(
-                dtoList.currencyTypeName,
-                dtoList.receive.value,
-                response.currencyDetails[dtoList.receive.get_currency_id - 1].icon
+                dtoData.currencyTypeName,
+                dtoData.receive.value,
+                response.currencyDetails[dtoData.receive.get_currency_id - 1].icon,
+                dtoData.receiveSparkLine.totalChange
             )
         }
 }

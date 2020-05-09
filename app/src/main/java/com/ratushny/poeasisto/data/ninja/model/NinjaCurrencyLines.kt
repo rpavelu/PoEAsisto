@@ -2,5 +2,6 @@ package com.ratushny.poeasisto.data.ninja.model
 
 data class NinjaCurrencyLines(
     val currencyTypeName: String,
-    val receive: NinjaCurrencyReceive
+    val receive: NinjaCurrencyReceive,
+    val receiveSparkLine: NinjaCurrencyReceiveSparkLine
 )
