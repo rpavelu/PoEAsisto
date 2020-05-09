@@ -12,3 +12,7 @@
 /captures
 .externalNativeBuild
 .cxx
+/.idea/
+*/build
+/app/src/androidTest/java/com/ratushny/poeasisto/ExampleInstrumentedTest.kt
+/app/src/test/java/com/ratushny/poeasisto/ExampleUnitTest.kt
