@@ -4,13 +4,13 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="80dp"
-    android:orientation="horizontal"
-    android:padding="12dp">
+    android:orientation="vertical">
 
     <ImageView
         android:id="@+id/currency_image_view"
         android:layout_width="48dp"
         android:layout_height="48dp"
+        android:layout_marginStart="12dp"
         android:contentDescription="@string/picture_of_currency_description"
         android:src="@mipmap/ic_launcher"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -43,11 +43,12 @@
         android:id="@+id/chaos_image_view"
         android:layout_width="24dp"
         android:layout_height="24dp"
+        android:layout_marginEnd="12dp"
+        android:contentDescription="@string/chaos_image_view_description"
         app:layout_constraintBottom_toBottomOf="@+id/currency_price"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="@+id/currency_price"
-        app:srcCompat="@drawable/chaos_pic"
-        android:contentDescription="@string/chaos_image_view_description" />
+        app:srcCompat="@drawable/chaos_pic" />
 
     <TextView
         android:id="@+id/currency_change_text_view"
@@ -64,10 +65,18 @@
         android:id="@+id/currency_change_arrow_image_view"
         android:layout_width="24dp"
         android:layout_height="24dp"
+        android:contentDescription="@string/currency_change_arrow_description"
         android:tint="@color/colorAccent"
         app:layout_constraintBottom_toBottomOf="@+id/currency_change_text_view"
         app:layout_constraintEnd_toStartOf="@+id/currency_change_text_view"
-        app:layout_constraintTop_toTopOf="@+id/currency_change_text_view"
-        android:contentDescription="@string/currency_change_arrow_description" />
+        app:layout_constraintTop_toTopOf="@+id/currency_change_text_view" />
+
+    <View
+        android:layout_width="0dp"
+        android:layout_height="1dp"
+        android:background="@android:color/darker_gray"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/chaos_image_view"
+        app:layout_constraintStart_toStartOf="@+id/currency_text_view" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
