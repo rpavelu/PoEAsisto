@@ -2,10 +2,8 @@ package com.ratushny.poeasisto
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import androidx.databinding.DataBindingUtil
 import androidx.navigation.findNavController
 import androidx.navigation.ui.NavigationUI
-import com.ratushny.poeasisto.ui.main.NinjaCurrencyFragment
 
 class MainActivity : AppCompatActivity() {
 

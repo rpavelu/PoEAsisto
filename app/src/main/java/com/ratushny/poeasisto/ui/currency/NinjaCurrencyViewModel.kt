@@ -1,4 +1,4 @@
-package com.ratushny.poeasisto.ui.main
+package com.ratushny.poeasisto.ui.currency
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData

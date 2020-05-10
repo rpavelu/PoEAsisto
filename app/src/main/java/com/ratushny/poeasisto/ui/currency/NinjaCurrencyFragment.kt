@@ -1,18 +1,20 @@
-package com.ratushny.poeasisto.ui.main
+package com.ratushny.poeasisto.ui.currency
 
 import android.os.Bundle
+import android.view.*
 import androidx.fragment.app.Fragment
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.findNavController
+import androidx.navigation.ui.NavigationUI
+import com.ratushny.poeasisto.R
 import com.ratushny.poeasisto.data.ninja.NinjaCurrencyListAdapter
 import com.ratushny.poeasisto.data.ninja.NinjaCurrencyListRepositoryImpl
 import com.ratushny.poeasisto.data.ninja.NinjaNetworkConverterImpl
 import com.ratushny.poeasisto.databinding.NinjaCurrencyFragmentBinding
 
+@Suppress("UNCHECKED_CAST")
 class NinjaCurrencyFragment : Fragment() {
 
     private lateinit var viewModel: NinjaCurrencyViewModel
@@ -51,6 +53,17 @@ class NinjaCurrencyFragment : Fragment() {
             adapter.addCurrencyList(it)
         })
 
+        setHasOptionsMenu(true)
+
         return binding.root
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
+        super.onCreateOptionsMenu(menu, inflater)
+        inflater.inflate(R.menu.main_menu, menu)
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        return NavigationUI.onNavDestinationSelected(item, requireView().findNavController()) || super.onOptionsItemSelected(item)
     }
 }
