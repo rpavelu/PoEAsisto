@@ -1,4 +1,4 @@
-package com.ratushny.poeasisto.ui.currency
+package com.ratushny.poeasisto.data.ninja.ui
 
 import android.os.Bundle
 import android.view.*
@@ -9,7 +9,7 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.findNavController
 import androidx.navigation.ui.NavigationUI
 import com.ratushny.poeasisto.R
-import com.ratushny.poeasisto.data.ninja.NinjaCurrencyListAdapter
+import com.ratushny.poeasisto.data.ninja.NinjaListAdapter
 import com.ratushny.poeasisto.data.ninja.NinjaCurrencyListRepositoryImpl
 import com.ratushny.poeasisto.data.ninja.NinjaNetworkConverterImpl
 import com.ratushny.poeasisto.databinding.NinjaCurrencyFragmentBinding
@@ -46,7 +46,7 @@ class NinjaCurrencyFragment : Fragment() {
         binding.mainViewModel = viewModel
         binding.lifecycleOwner = this
 
-        val adapter = NinjaCurrencyListAdapter()
+        val adapter = NinjaListAdapter()
         binding.listScreenRecyclerview.adapter = adapter
 
         viewModel.ninjaCurrencyList.observe(viewLifecycleOwner, Observer {

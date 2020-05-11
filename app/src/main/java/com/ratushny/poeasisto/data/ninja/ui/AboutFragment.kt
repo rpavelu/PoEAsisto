@@ -1,4 +1,4 @@
-package com.ratushny.poeasisto.ui.currency
+package com.ratushny.poeasisto.data.ninja.ui
 
 import android.os.Bundle
 import android.view.LayoutInflater

@@ -1,6 +1,6 @@
-package com.ratushny.poeasisto.data.ninja.network
+package com.ratushny.poeasisto.data.ninja.currency.model.network
 
-import com.ratushny.poeasisto.data.ninja.model.NinjaCurrencyResponse
+import com.ratushny.poeasisto.data.ninja.currency.model.NinjaCurrencyResponse
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import retrofit2.http.GET

@@ -1,4 +1,4 @@
-package com.ratushny.poeasisto.ui.currency
+package com.ratushny.poeasisto
 
 import android.os.Bundle
 import androidx.preference.PreferenceFragmentCompat

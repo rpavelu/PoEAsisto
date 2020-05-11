@@ -8,14 +8,14 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.ratushny.poeasisto.R
-import com.ratushny.poeasisto.data.ninja.model.NinjaCurrency
+import com.ratushny.poeasisto.data.ninja.currency.model.NinjaCurrency
 import java.math.BigDecimal
 import java.math.RoundingMode
 import kotlin.math.ln
 import kotlin.math.pow
 
-class NinjaCurrencyListAdapter :
-    RecyclerView.Adapter<NinjaCurrencyListAdapter.ViewHolder>() {
+class NinjaListAdapter :
+    RecyclerView.Adapter<NinjaListAdapter.ViewHolder>() {
 
     private var ninjaCurrencyData: List<NinjaCurrency> = emptyList()
     lateinit var clickListener: ClickListener

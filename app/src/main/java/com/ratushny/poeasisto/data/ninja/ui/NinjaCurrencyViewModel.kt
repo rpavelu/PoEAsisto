@@ -1,10 +1,10 @@
-package com.ratushny.poeasisto.ui.currency
+package com.ratushny.poeasisto.data.ninja.ui
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.ratushny.poeasisto.data.ninja.NinjaCurrencyListRepository
-import com.ratushny.poeasisto.data.ninja.model.NinjaCurrency
+import com.ratushny.poeasisto.data.ninja.currency.model.NinjaCurrency
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.SupervisorJob
