@@ -1,8 +1,8 @@
-package com.ratushny.poeasisto.data.ninja
+package com.ratushny.poeasisto.ninja.data
 
 import android.util.Log
-import com.ratushny.poeasisto.data.ninja.currency.model.NinjaCurrency
-import com.ratushny.poeasisto.data.ninja.currency.model.network.NinjaCurrencyService
+import com.ratushny.poeasisto.ninja.data.currency.model.NinjaCurrency
+import com.ratushny.poeasisto.ninja.data.currency.network.NinjaCurrencyService
 
 interface NinjaCurrencyListRepository {
     suspend fun getNinjaCurrencyListData(): List<NinjaCurrency>?

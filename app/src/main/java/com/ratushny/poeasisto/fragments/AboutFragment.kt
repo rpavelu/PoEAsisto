@@ -1,4 +1,4 @@
-package com.ratushny.poeasisto.data.ninja.ui
+package com.ratushny.poeasisto.fragments
 
 import android.os.Bundle
 import android.view.LayoutInflater

@@ -1,4 +1,4 @@
-package com.ratushny.poeasisto.data.ninja.ui
+package com.ratushny.poeasisto.ninja.ui
 
 import android.os.Bundle
 import android.view.*
@@ -9,9 +9,9 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.findNavController
 import androidx.navigation.ui.NavigationUI
 import com.ratushny.poeasisto.R
-import com.ratushny.poeasisto.data.ninja.NinjaListAdapter
-import com.ratushny.poeasisto.data.ninja.NinjaCurrencyListRepositoryImpl
-import com.ratushny.poeasisto.data.ninja.NinjaNetworkConverterImpl
+import com.ratushny.poeasisto.ninja.data.NinjaListAdapter
+import com.ratushny.poeasisto.ninja.data.NinjaCurrencyListRepositoryImpl
+import com.ratushny.poeasisto.ninja.data.NinjaNetworkConverterImpl
 import com.ratushny.poeasisto.databinding.NinjaCurrencyFragmentBinding
 
 @Suppress("UNCHECKED_CAST")

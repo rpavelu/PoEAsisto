@@ -1,4 +1,4 @@
-package com.ratushny.poeasisto.data.ninja.currency.model
+package com.ratushny.poeasisto.ninja.data.currency.model
 
 data class NinjaCurrencyReceive(
     val value: Double,

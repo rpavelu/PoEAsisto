@@ -1,4 +1,4 @@
-package com.ratushny.poeasisto.data.ninja
+package com.ratushny.poeasisto.ninja.data
 
 import android.view.LayoutInflater
 import android.view.View
@@ -8,7 +8,7 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.ratushny.poeasisto.R
-import com.ratushny.poeasisto.data.ninja.currency.model.NinjaCurrency
+import com.ratushny.poeasisto.ninja.data.currency.model.NinjaCurrency
 import java.math.BigDecimal
 import java.math.RoundingMode
 import kotlin.math.ln

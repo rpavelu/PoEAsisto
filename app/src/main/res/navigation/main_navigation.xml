@@ -6,14 +6,14 @@
 
     <fragment
         android:id="@+id/currencyFragment"
-        android:name="com.ratushny.poeasisto.data.ninja.ui.NinjaCurrencyFragment"
+        android:name="com.ratushny.poeasisto.ninja.ui.NinjaCurrencyFragment"
         android:label="Currency" />
     <fragment
         android:id="@+id/aboutFragment"
-        android:name="com.ratushny.poeasisto.data.ninja.ui.AboutFragment"
+        android:name="com.ratushny.poeasisto.fragments.AboutFragment"
         android:label="@string/about" />
     <fragment
         android:id="@+id/settingsFragment"
-        android:name="com.ratushny.poeasisto.SettingsFragment"
+        android:name="com.ratushny.poeasisto.fragments.SettingsFragment"
         android:label="@string/settings" />
 </navigation>

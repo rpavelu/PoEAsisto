@@ -1,4 +1,4 @@
-package com.ratushny.poeasisto
+package com.ratushny.poeasisto.fragments
 
 import android.os.Bundle
 import androidx.preference.PreferenceFragmentCompat

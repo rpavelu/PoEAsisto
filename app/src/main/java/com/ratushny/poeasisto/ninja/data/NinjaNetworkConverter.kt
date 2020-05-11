@@ -1,7 +1,7 @@
-package com.ratushny.poeasisto.data.ninja
+package com.ratushny.poeasisto.ninja.data
 
-import com.ratushny.poeasisto.data.ninja.currency.model.NinjaCurrency
-import com.ratushny.poeasisto.data.ninja.currency.model.NinjaCurrencyResponse
+import com.ratushny.poeasisto.ninja.data.currency.model.NinjaCurrency
+import com.ratushny.poeasisto.ninja.data.currency.model.NinjaCurrencyResponse
 
 interface NinjaNetworkConverter {
     fun convertCurrencyList(response: NinjaCurrencyResponse): List<NinjaCurrency>?
