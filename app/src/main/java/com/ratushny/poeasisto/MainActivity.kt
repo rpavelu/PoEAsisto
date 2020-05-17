@@ -8,6 +8,7 @@ import androidx.navigation.NavController
 import androidx.navigation.NavDestination
 import androidx.navigation.findNavController
 import androidx.navigation.ui.NavigationUI
+import androidx.preference.PreferenceManager
 import com.mikepenz.materialdrawer.model.PrimaryDrawerItem
 import com.mikepenz.materialdrawer.model.SecondaryDrawerItem
 import com.mikepenz.materialdrawer.model.interfaces.withIdentifier
@@ -23,6 +24,10 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.main_activity)
 
+//        val preferences = PreferenceManager.getDefaultSharedPreferences(applicationContext)
+//        val theme = preferences.getBoolean("dark_theme_preference", false)
+//        if (theme) setTheme(R.style.LightAppTheme) else setTheme(R.style.DarkAppTheme)
+
         val itemCurrency = PrimaryDrawerItem().withIdentifier(1).withName("Currency")
         val itemFragment = SecondaryDrawerItem().withIdentifier(2).withName("Fragments")
 
@@ -33,8 +38,16 @@ class MainActivity : AppCompatActivity() {
         slider.setSelection(1)
         slider.onDrawerItemClickListener = { v, drawerItem, position ->
             when (drawerItem) {
-                itemCurrency -> Toast.makeText(applicationContext, "Currency fragment", Toast.LENGTH_SHORT).show()
-                itemFragment -> Toast.makeText(applicationContext, "Fragments fragment", Toast.LENGTH_SHORT).show()
+                itemCurrency -> Toast.makeText(
+                    applicationContext,
+                    "TODO: Currency fragment",
+                    Toast.LENGTH_SHORT
+                ).show()
+                itemFragment -> Toast.makeText(
+                    applicationContext,
+                    "TODO: Fragments fragment",
+                    Toast.LENGTH_SHORT
+                ).show()
             }
             false
         }
