@@ -24,9 +24,7 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.main_activity)
 
-//        val preferences = PreferenceManager.getDefaultSharedPreferences(applicationContext)
-//        val theme = preferences.getBoolean("dark_theme_preference", false)
-//        if (theme) setTheme(R.style.LightAppTheme) else setTheme(R.style.DarkAppTheme)
+        val preferences = PreferenceManager.getDefaultSharedPreferences(applicationContext)
 
         val itemCurrency = PrimaryDrawerItem().withIdentifier(1).withName("Currency")
         val itemFragment = SecondaryDrawerItem().withIdentifier(2).withName("Fragments")
@@ -54,7 +52,7 @@ class MainActivity : AppCompatActivity() {
 
         //Prevent the drawer from being swiped anywhere other than the startDestination
         navController.addOnDestinationChangedListener { nc: NavController, nd: NavDestination, args: Bundle? ->
-            if (nd.id == nc.graph.startDestination) {
+            if (nd.id == nc.graph.startDestinationId) {
                 drawerLayout.setDrawerLockMode(DrawerLayout.LOCK_MODE_UNLOCKED)
             } else {
                 drawerLayout.setDrawerLockMode(DrawerLayout.LOCK_MODE_LOCKED_CLOSED)

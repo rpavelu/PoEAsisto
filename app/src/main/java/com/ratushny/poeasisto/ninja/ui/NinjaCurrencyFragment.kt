@@ -32,7 +32,7 @@ class NinjaCurrencyFragment : Fragment() {
         )
 
         viewModel = ViewModelProvider(this, object : ViewModelProvider.Factory {
-            override fun <T : ViewModel?> create(modelClass: Class<T>): T {
+            override fun <T : ViewModel> create(modelClass: Class<T>): T {
                 return NinjaCurrencyViewModel(
                     NinjaCurrencyListRepositoryImpl(
                         NinjaNetworkConverterImpl()
@@ -49,9 +49,9 @@ class NinjaCurrencyFragment : Fragment() {
         val adapter = NinjaListAdapter()
         binding.listScreenRecyclerview.adapter = adapter
 
-        viewModel.ninjaCurrencyList.observe(viewLifecycleOwner, Observer {
+        viewModel.ninjaCurrencyList.observe(viewLifecycleOwner) {
             adapter.addCurrencyList(it)
-        })
+        }
 
         setHasOptionsMenu(true)
 

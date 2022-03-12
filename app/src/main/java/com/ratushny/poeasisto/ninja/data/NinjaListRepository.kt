@@ -14,10 +14,10 @@ class NinjaCurrencyListRepositoryImpl(
 ) :
     NinjaCurrencyListRepository {
     override suspend fun getNinjaCurrencyListData(): List<NinjaCurrency>? {
-        Log.i("Repository", service.getNinjaDataService("Delirium", "Currency").toString())
+        // TODO: Change it
         return ninjaNetworkConverter.convertCurrencyList(
             service.getNinjaDataService(
-                "Delirium",
+                "Archnemesis",
                 "Currency"
             )
         )
