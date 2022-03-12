@@ -4,7 +4,7 @@ import com.ratushny.poeasisto.ninja.data.currency.model.NinjaCurrency
 import com.ratushny.poeasisto.ninja.data.currency.model.NinjaCurrencyResponse
 
 interface NinjaNetworkConverter {
-    fun convertCurrencyList(response: NinjaCurrencyResponse): List<NinjaCurrency>?
+    fun convertCurrencyList(response: NinjaCurrencyResponse): List<NinjaCurrency>
 }
 
 class NinjaNetworkConverterImpl : NinjaNetworkConverter {

@@ -13,7 +13,7 @@ class NinjaCurrencyListRepositoryImpl(
     private val service: NinjaCurrencyService = NinjaCurrencyService.create()
 ) :
     NinjaCurrencyListRepository {
-    override suspend fun getNinjaCurrencyListData(): List<NinjaCurrency>? {
+    override suspend fun getNinjaCurrencyListData(): List<NinjaCurrency> {
         // TODO: Change it
         return ninjaNetworkConverter.convertCurrencyList(
             service.getNinjaDataService(
