@@ -1,28 +1,25 @@
 package com.ratushny.poeasisto
 
 import android.os.Bundle
-import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.drawerlayout.widget.DrawerLayout
 import androidx.navigation.NavController
 import androidx.navigation.NavDestination
 import androidx.navigation.findNavController
 import androidx.navigation.ui.NavigationUI
-import androidx.preference.PreferenceManager
 import com.google.android.material.elevation.SurfaceColors
-import com.mikepenz.materialdrawer.iconics.iconicsIcon
-import com.mikepenz.materialdrawer.model.PrimaryDrawerItem
 import com.mikepenz.materialdrawer.model.SecondaryDrawerItem
-import com.mikepenz.materialdrawer.model.interfaces.descriptionRes
 import com.mikepenz.materialdrawer.model.interfaces.nameRes
-import com.mikepenz.materialdrawer.model.interfaces.withIdentifier
-import com.mikepenz.materialdrawer.model.interfaces.withName
+import com.ratushny.poeasisto.ninja.DrawerInterface
+
 import kotlinx.android.synthetic.main.main_activity.*
 
 class MainActivity : AppCompatActivity() {
 
     private val navController: NavController
         get() = findNavController(R.id.nav_host_fragment)
+
+    private lateinit var drawerInterface: DrawerInterface
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -45,16 +42,12 @@ class MainActivity : AppCompatActivity() {
         slider.setSelection(1)
         slider.onDrawerItemClickListener = { v, drawerItem, position ->
             when (drawerItem) {
-                itemCurrency -> Toast.makeText(
-                    applicationContext,
-                    "TODO: Currency fragment",
-                    Toast.LENGTH_SHORT
-                ).show()
-                itemFragment -> Toast.makeText(
-                    applicationContext,
-                    "TODO: Fragments fragment",
-                    Toast.LENGTH_SHORT
-                ).show()
+                itemCurrency -> {
+                    drawerInterface.onCurrencyClicked()
+                }
+                itemFragment -> {
+                    drawerInterface.onFragmentClicked()
+                }
             }
             false
         }
@@ -77,5 +70,9 @@ class MainActivity : AppCompatActivity() {
 
     override fun onSupportNavigateUp(): Boolean {
         return NavigationUI.navigateUp(navController, drawerLayout)
+    }
+
+    fun setDrawerListener(drawerInterface: DrawerInterface) {
+        this.drawerInterface = drawerInterface
     }
 }
