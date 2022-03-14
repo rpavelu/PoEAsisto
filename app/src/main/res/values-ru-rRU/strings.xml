@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">PoE Ассистент</string>
+    <string name="about">О приложении</string>
+    <string name="settings">Настройки</string>
+    <string name="about_text">Приложение использует API poe.ninja для оценки практически всех предметов игрового лута</string>
+    <string name="dark_theme">Тёмная тема</string>
+    <string name="league">Лига</string>
+    <string name="currency">Валюта</string>
+    <string name="fragments">Фрагменты</string>
+</resources>

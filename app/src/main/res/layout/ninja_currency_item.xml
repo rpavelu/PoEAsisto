@@ -63,17 +63,17 @@
         android:layout_width="24dp"
         android:layout_height="24dp"
         android:contentDescription="@string/currency_change_arrow_description"
-        android:tint="@color/colorAccent"
         app:layout_constraintBottom_toBottomOf="@+id/currency_change_text_view"
         app:layout_constraintStart_toStartOf="@+id/currency_text_view"
         app:layout_constraintTop_toTopOf="@+id/currency_change_text_view"
-        app:srcCompat="@drawable/ic_arrow_drop_up_black_24dp" />
+        app:srcCompat="@drawable/ic_arrow_drop_up_black_24dp"
+        app:tint="@color/colorAccent" />
 
     <View
-        android:id="@+id/view"
+        android:id="@+id/divider"
         android:layout_width="0dp"
         android:layout_height="1dp"
-        android:background="#EEEEEE"
+        android:background="?attr/dividerHorizontal"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="@+id/chaos_image_view"
         app:layout_constraintStart_toStartOf="@+id/currency_image_view" />

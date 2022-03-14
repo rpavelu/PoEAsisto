@@ -2,6 +2,14 @@
 <androidx.preference.PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
     <SwitchPreference
         android:defaultValue="false"
+        android:icon="@drawable/ic_baseline_sun_24"
         android:key="theme_preference"
-        android:title="Dark theme" />
+        android:title="@string/dark_theme" />
+
+    <DropDownPreference
+        android:defaultValue="@string/standard_league"
+        android:icon="@drawable/ic_baseline_house_24"
+        android:key="league_list_preference"
+        android:summary="@string/standard_league"
+        android:title="@string/league" />
 </androidx.preference.PreferenceScreen>

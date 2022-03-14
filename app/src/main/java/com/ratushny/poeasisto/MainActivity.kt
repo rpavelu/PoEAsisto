@@ -1,16 +1,20 @@
 package com.ratushny.poeasisto
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
 import androidx.drawerlayout.widget.DrawerLayout
 import androidx.navigation.NavController
 import androidx.navigation.NavDestination
 import androidx.navigation.findNavController
 import androidx.navigation.ui.NavigationUI
 import androidx.preference.PreferenceManager
+import com.google.android.material.elevation.SurfaceColors
+import com.mikepenz.materialdrawer.iconics.iconicsIcon
 import com.mikepenz.materialdrawer.model.PrimaryDrawerItem
 import com.mikepenz.materialdrawer.model.SecondaryDrawerItem
+import com.mikepenz.materialdrawer.model.interfaces.descriptionRes
+import com.mikepenz.materialdrawer.model.interfaces.nameRes
 import com.mikepenz.materialdrawer.model.interfaces.withIdentifier
 import com.mikepenz.materialdrawer.model.interfaces.withName
 import kotlinx.android.synthetic.main.main_activity.*
@@ -24,10 +28,15 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.main_activity)
 
-        val preferences = PreferenceManager.getDefaultSharedPreferences(applicationContext)
+        val itemCurrency = SecondaryDrawerItem().apply {
+            identifier = 1
+            nameRes = R.string.currency
+        }
 
-        val itemCurrency = PrimaryDrawerItem().withIdentifier(1).withName("Currency")
-        val itemFragment = SecondaryDrawerItem().withIdentifier(2).withName("Fragments")
+        val itemFragment = SecondaryDrawerItem().apply {
+            identifier = 2
+            nameRes = R.string.fragments
+        }
 
         slider.itemAdapter.add(
             itemCurrency,
@@ -49,6 +58,10 @@ class MainActivity : AppCompatActivity() {
             }
             false
         }
+
+        val actionBarColor = SurfaceColors.SURFACE_2.getColor(this)
+        window.statusBarColor = actionBarColor
+        window.navigationBarColor = actionBarColor
 
         //Prevent the drawer from being swiped anywhere other than the startDestination
         navController.addOnDestinationChangedListener { nc: NavController, nd: NavDestination, args: Bundle? ->

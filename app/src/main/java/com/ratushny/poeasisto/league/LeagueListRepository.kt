@@ -1,28 +1,17 @@
 package com.ratushny.poeasisto.league
 
-import android.util.Log
+import com.ratushny.poeasisto.league.model.LeagueList
 import com.ratushny.poeasisto.league.network.LeagueService
-import com.ratushny.poeasisto.ninja.data.NinjaNetworkConverter
-import com.ratushny.poeasisto.ninja.data.currency.model.NinjaCurrency
-import com.ratushny.poeasisto.ninja.data.currency.network.NinjaCurrencyService
 
 interface LeagueListRepository {
-    suspend fun getCurrencyList(): List<NinjaCurrency>
+    suspend fun getLeagueList(): LeagueList
 }
 
 class LeagueListRepositoryImpl(
-    private val leagueNetworkConverter: NinjaNetworkConverter,
-    private val service: NinjaCurrencyService = NinjaCurrencyService.create()
+    private val service: LeagueService = LeagueService.create()
 ) :
     LeagueListRepository {
-    override suspend fun getCurrencyList(): List<NinjaCurrency> {
-        // TODO: Change it
-        Log.i("Repository", service.getNinjaDataService("Archnemesis", "Currency").toString())
-        return leagueNetworkConverter.convertCurrencyList(
-            service.getNinjaDataService(
-                "Archnemesis",
-                "Currency"
-            )
-        )
+    override suspend fun getLeagueList(): LeagueList {
+        return service.getLeagueService(true)
     }
 }

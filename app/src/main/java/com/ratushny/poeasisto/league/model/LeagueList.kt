@@ -1,3 +1,3 @@
 package com.ratushny.poeasisto.league.model
 
-class League : ArrayList<LeagueItem>()
+class LeagueList : ArrayList<LeagueItem>()

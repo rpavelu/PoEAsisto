@@ -2,7 +2,7 @@
 
 buildscript {
     ext.kotlin_version = '1.6.10'
-    ext.lastestMaterialDrawerRelease = '8.4.5'
+    ext.lastestMaterialDrawerRelease = '9.0.0-b01'
     repositories {
         google()
         mavenCentral()

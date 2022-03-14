@@ -1,10 +1,15 @@
 <resources>
     <string name="app_name">PoE Assistant</string>
-    <string name="picture_of_currency_description">Picture of currency</string>
-    <string name="currency_change_arrow_description">Picture of up/down arrow</string>
-    <string name="chaos_image_view_description">Picture of chaos currency</string>
+    <string name="picture_of_currency_description" translatable="false">Picture of currency</string>
+    <string name="currency_change_arrow_description" translatable="false">Picture of up/down arrow</string>
+    <string name="chaos_image_view_description" translatable="false">Picture of chaos currency</string>
     <string name="about">About</string>
     <string name="settings">Settings</string>
     <string name="about_text">This application use poe.ninja API to price almost every piece of in-game loot</string>
-    <string name="poe_logo_description">PNG picture of Path of Exile logo</string>
+    <string name="poe_logo_description" translatable="false">PNG picture of Path of Exile logo</string>
+    <string name="standard_league" translatable="false">Standard</string>
+    <string name="dark_theme">Dark theme</string>
+    <string name="league">League</string>
+    <string name="currency">Currency</string>
+    <string name="fragments">Fragments</string>
 </resources>

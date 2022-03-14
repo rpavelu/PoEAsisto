@@ -26,9 +26,9 @@ class NinjaCurrencyViewModel(
         viewModelJob.cancel()
     }
 
-    fun getData() {
+    fun getData(league: String) {
         launch {
-            _ninjaCurrencyList.value = ninjaCurrencyListRepository.getNinjaCurrencyListData()
+            _ninjaCurrencyList.value = ninjaCurrencyListRepository.getNinjaCurrencyListData(league)
         }
     }
 }
