@@ -3,6 +3,7 @@ package com.ratushny.poeasisto.ninja.ui
 import android.content.Context
 import android.os.Bundle
 import android.view.*
+import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
@@ -27,6 +28,11 @@ class NinjaCurrencyFragment : Fragment(), DrawerInterface {
     private var league = "Standard" // Default is 'Standard'
     private var currencyType = "Currency" // Default is 'Currency'
 
+    companion object {
+        const val CURRENCY = "Currency"
+        const val FRAGMENT = "Fragment"
+    }
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -49,6 +55,13 @@ class NinjaCurrencyFragment : Fragment(), DrawerInterface {
         })[NinjaCurrencyViewModel::class.java]
 
         binding.lifecycleOwner = this
+
+        // Set ActionBar title when coming back from other screens
+        val actionBar = (activity as MainActivity).supportActionBar
+        when (currencyType) {
+            CURRENCY -> actionBar?.title = resources.getString(R.string.currency)
+            FRAGMENT -> actionBar?.title = resources.getString(R.string.fragments)
+        }
 
         val settingsPrefs = context?.getSharedPreferences("settings_prefs", Context.MODE_PRIVATE)
         league =
@@ -88,13 +101,13 @@ class NinjaCurrencyFragment : Fragment(), DrawerInterface {
     }
 
     override fun onCurrencyClicked() {
-        currencyType = "Currency"
+        currencyType = CURRENCY
         Timber.i("Clicked currency: %s:%s", league, currencyType)
         viewModel.getData(league, currencyType)
     }
 
     override fun onFragmentClicked() {
-        currencyType = "Fragment"
+        currencyType = FRAGMENT
         Timber.i("Clicked fragment: %s:%s", league, currencyType)
         viewModel.getData(league, currencyType)
     }

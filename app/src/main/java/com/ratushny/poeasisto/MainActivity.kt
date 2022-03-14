@@ -43,9 +43,11 @@ class MainActivity : AppCompatActivity() {
         slider.onDrawerItemClickListener = { v, drawerItem, position ->
             when (drawerItem) {
                 itemCurrency -> {
+                    supportActionBar?.title = resources.getString(R.string.currency)
                     drawerInterface.onCurrencyClicked()
                 }
                 itemFragment -> {
+                    supportActionBar?.title = resources.getString(R.string.fragments)
                     drawerInterface.onFragmentClicked()
                 }
             }
