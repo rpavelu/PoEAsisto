@@ -9,22 +9,14 @@ interface NinjaNetworkConverter {
 
 class NinjaNetworkConverterImpl : NinjaNetworkConverter {
     override fun convertCurrencyList(response: NinjaCurrencyResponse): List<NinjaCurrency> =
-        response.lines.map { dtoData ->
-
-            // TODO: This shit is a dirty hack to avoid NPE. I need both price changes.
-            var value = 0.0
-            var currencyId = 1
-
-            if (dtoData.receive != null) {
-                value = dtoData.receive.value
-                currencyId = dtoData.receive.get_currency_id
+        response.lines
+            .filter { it.receive != null }
+            .map { dtoData ->
+                NinjaCurrency(
+                    dtoData.currencyTypeName,
+                    dtoData.receive.value,
+                    response.currencyDetails[dtoData.receive.get_currency_id - 1].icon,
+                    dtoData.receiveSparkLine.totalChange
+                )
             }
-
-            NinjaCurrency(
-                dtoData.currencyTypeName,
-                value,
-                response.currencyDetails[currencyId - 1].icon,
-                dtoData.receiveSparkLine.totalChange
-            )
-        }
 }
