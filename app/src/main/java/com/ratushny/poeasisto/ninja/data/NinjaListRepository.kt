@@ -1,24 +1,37 @@
 package com.ratushny.poeasisto.ninja.data
 
-import com.ratushny.poeasisto.ninja.data.currency.model.NinjaCurrency
-import com.ratushny.poeasisto.ninja.data.currency.network.NinjaCurrencyService
+import com.ratushny.poeasisto.ninja.data.model.NinjaListItem
+import com.ratushny.poeasisto.ninja.data.model.currencyoverview.NinjaCurrency
+import com.ratushny.poeasisto.ninja.data.model.itemoverview.NinjaItem
+import com.ratushny.poeasisto.ninja.network.NinjaNetworkService
 import timber.log.Timber
 
-interface NinjaCurrencyListRepository {
-    suspend fun getNinjaCurrencyListData(league: String, currencyType: String): List<NinjaCurrency>
+interface NinjaListRepository {
+    suspend fun getNinjaCurrencyListData(league: String, currencyType: String): List<NinjaListItem>
+    suspend fun getNinjaItemListData(league: String, itemType: String): List<NinjaListItem>
 }
 
-class NinjaCurrencyListRepositoryImpl(
+class NinjaListRepositoryImpl(
     private val ninjaNetworkConverter: NinjaNetworkConverter,
-    private val service: NinjaCurrencyService = NinjaCurrencyService.create()
+    private val service: NinjaNetworkService = NinjaNetworkService.create()
 ) :
-    NinjaCurrencyListRepository {
-    override suspend fun getNinjaCurrencyListData(league: String, currencyType: String): List<NinjaCurrency> {
+    NinjaListRepository {
+    override suspend fun getNinjaCurrencyListData(league: String, currencyType: String): List<NinjaListItem> {
         Timber.i("Start loading currency data for %s league", league)
         return ninjaNetworkConverter.convertCurrencyList(
-            service.getNinjaDataService(
+            service.getNinjaCurrencyDataService(
                 league,
                 currencyType
+            )
+        )
+    }
+
+    override suspend fun getNinjaItemListData(league: String, itemType: String): List<NinjaListItem> {
+        Timber.i("Start loading currency data for %s league", league)
+        return ninjaNetworkConverter.convertItemList(
+            service.getNinjaItemDataService(
+                league,
+                itemType
             )
         )
     }

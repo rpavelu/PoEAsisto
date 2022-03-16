@@ -6,7 +6,7 @@
 
     <fragment
         android:id="@+id/currencyFragment"
-        android:name="com.ratushny.poeasisto.ninja.ui.NinjaCurrencyFragment"
+        android:name="com.ratushny.poeasisto.ninja.ui.NinjaFragment"
         android:label="@string/currency" />
     <fragment
         android:id="@+id/aboutFragment"

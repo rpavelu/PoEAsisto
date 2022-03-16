@@ -1,4 +1,4 @@
-package com.ratushny.poeasisto.ninja.data.currency.model
+package com.ratushny.poeasisto.ninja.data.model.currencyoverview
 
 data class NinjaCurrency(
     val currencyTypeName: String,

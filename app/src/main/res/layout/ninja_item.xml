@@ -7,7 +7,7 @@
     android:orientation="vertical">
 
     <ImageView
-        android:id="@+id/currency_image_view"
+        android:id="@+id/item_icon_imageview"
         android:layout_width="48dp"
         android:layout_height="48dp"
         android:layout_marginStart="12dp"
@@ -18,24 +18,24 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/currency_text_view"
+        android:id="@+id/item_name_textview"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:textAllCaps="false"
         android:textStyle="bold"
-        app:layout_constraintStart_toEndOf="@+id/currency_image_view"
-        app:layout_constraintTop_toTopOf="@+id/currency_image_view"
+        app:layout_constraintStart_toEndOf="@+id/item_icon_imageview"
+        app:layout_constraintTop_toTopOf="@+id/item_icon_imageview"
         tools:text="Mirror of Kalandra" />
 
     <TextView
-        android:id="@+id/currency_price"
+        android:id="@+id/item_price"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="8dp"
-        app:layout_constraintBottom_toBottomOf="@+id/currency_image_view"
+        app:layout_constraintBottom_toBottomOf="@+id/item_icon_imageview"
         app:layout_constraintEnd_toStartOf="@+id/chaos_image_view"
-        app:layout_constraintTop_toTopOf="@+id/currency_text_view"
+        app:layout_constraintTop_toTopOf="@+id/item_name_textview"
         tools:text="99999" />
 
     <ImageView
@@ -44,30 +44,29 @@
         android:layout_height="24dp"
         android:layout_marginEnd="12dp"
         android:contentDescription="@string/chaos_image_view_description"
-        app:layout_constraintBottom_toBottomOf="@+id/currency_price"
+        app:layout_constraintBottom_toBottomOf="@+id/item_price"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/currency_price"
+        app:layout_constraintTop_toTopOf="@+id/item_price"
         app:srcCompat="@drawable/chaos_pic" />
 
     <TextView
-        android:id="@+id/currency_change_text_view"
+        android:id="@+id/item_change_textview"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
-        app:layout_constraintStart_toEndOf="@+id/currency_change_arrow_image_view"
-        app:layout_constraintTop_toBottomOf="@+id/currency_text_view"
+        app:layout_constraintStart_toEndOf="@+id/item_change_arrow_imageview"
+        app:layout_constraintTop_toBottomOf="@+id/item_name_textview"
         tools:text="15%" />
 
     <ImageView
-        android:id="@+id/currency_change_arrow_image_view"
+        android:id="@+id/item_change_arrow_imageview"
         android:layout_width="24dp"
         android:layout_height="24dp"
         android:contentDescription="@string/currency_change_arrow_description"
-        app:layout_constraintBottom_toBottomOf="@+id/currency_change_text_view"
-        app:layout_constraintStart_toStartOf="@+id/currency_text_view"
-        app:layout_constraintTop_toTopOf="@+id/currency_change_text_view"
-        app:srcCompat="@drawable/ic_arrow_drop_up_black_24dp"
-        app:tint="@color/colorAccent" />
+        app:layout_constraintBottom_toBottomOf="@+id/item_change_textview"
+        app:layout_constraintStart_toStartOf="@+id/item_name_textview"
+        app:layout_constraintTop_toTopOf="@+id/item_change_textview"
+        app:srcCompat="@drawable/ic_arrow_drop_up_black_24dp" />
 
     <View
         android:id="@+id/divider"
@@ -76,6 +75,6 @@
         android:background="?attr/dividerHorizontal"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="@+id/chaos_image_view"
-        app:layout_constraintStart_toStartOf="@+id/currency_image_view" />
+        app:layout_constraintStart_toStartOf="@+id/item_icon_imageview" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
