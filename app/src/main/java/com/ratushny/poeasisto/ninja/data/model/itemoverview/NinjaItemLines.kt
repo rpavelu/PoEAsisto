@@ -5,5 +5,5 @@ data class NinjaItemLines(
     val icon: String,
     val sparkline: NinjaItemReceiveSparkLine,
     val chaosValue: Float,
-    val exaltedValue: Double
+    val exaltedValue: Float
 )

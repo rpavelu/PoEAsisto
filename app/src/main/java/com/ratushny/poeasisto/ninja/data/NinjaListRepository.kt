@@ -27,7 +27,7 @@ class NinjaListRepositoryImpl(
     }
 
     override suspend fun getNinjaItemListData(league: String, itemType: String): List<NinjaListItem> {
-        Timber.i("Start loading currency data for %s league", league)
+        Timber.i("Start loading item data for %s league", league)
         return ninjaNetworkConverter.convertItemList(
             service.getNinjaItemDataService(
                 league,

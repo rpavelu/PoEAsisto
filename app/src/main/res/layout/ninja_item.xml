@@ -7,7 +7,7 @@
     android:orientation="vertical">
 
     <ImageView
-        android:id="@+id/item_icon_imageview"
+        android:id="@+id/icon"
         android:layout_width="48dp"
         android:layout_height="48dp"
         android:layout_marginStart="12dp"
@@ -18,54 +18,54 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/item_name_textview"
+        android:id="@+id/name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:textAllCaps="false"
         android:textStyle="bold"
-        app:layout_constraintStart_toEndOf="@+id/item_icon_imageview"
-        app:layout_constraintTop_toTopOf="@+id/item_icon_imageview"
+        app:layout_constraintStart_toEndOf="@+id/icon"
+        app:layout_constraintTop_toTopOf="@+id/icon"
         tools:text="Mirror of Kalandra" />
 
     <TextView
-        android:id="@+id/item_price"
+        android:id="@+id/price"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="8dp"
-        app:layout_constraintBottom_toBottomOf="@+id/item_icon_imageview"
-        app:layout_constraintEnd_toStartOf="@+id/chaos_image_view"
-        app:layout_constraintTop_toTopOf="@+id/item_name_textview"
+        app:layout_constraintBottom_toBottomOf="@+id/icon"
+        app:layout_constraintEnd_toStartOf="@+id/chaos_image"
+        app:layout_constraintTop_toTopOf="@+id/name"
         tools:text="99999" />
 
     <ImageView
-        android:id="@+id/chaos_image_view"
+        android:id="@+id/chaos_image"
         android:layout_width="24dp"
         android:layout_height="24dp"
         android:layout_marginEnd="12dp"
         android:contentDescription="@string/chaos_image_view_description"
-        app:layout_constraintBottom_toBottomOf="@+id/item_price"
+        app:layout_constraintBottom_toBottomOf="@+id/price"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/item_price"
+        app:layout_constraintTop_toTopOf="@+id/price"
         app:srcCompat="@drawable/chaos_pic" />
 
     <TextView
-        android:id="@+id/item_change_textview"
+        android:id="@+id/price_change"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
-        app:layout_constraintStart_toEndOf="@+id/item_change_arrow_imageview"
-        app:layout_constraintTop_toBottomOf="@+id/item_name_textview"
+        app:layout_constraintStart_toEndOf="@+id/price_change_arrow"
+        app:layout_constraintTop_toBottomOf="@+id/name"
         tools:text="15%" />
 
     <ImageView
-        android:id="@+id/item_change_arrow_imageview"
+        android:id="@+id/price_change_arrow"
         android:layout_width="24dp"
         android:layout_height="24dp"
         android:contentDescription="@string/currency_change_arrow_description"
-        app:layout_constraintBottom_toBottomOf="@+id/item_change_textview"
-        app:layout_constraintStart_toStartOf="@+id/item_name_textview"
-        app:layout_constraintTop_toTopOf="@+id/item_change_textview"
+        app:layout_constraintBottom_toBottomOf="@+id/price_change"
+        app:layout_constraintStart_toStartOf="@+id/name"
+        app:layout_constraintTop_toTopOf="@+id/price_change"
         app:srcCompat="@drawable/ic_arrow_drop_up_black_24dp" />
 
     <View
@@ -74,7 +74,7 @@
         android:layout_height="1dp"
         android:background="?attr/dividerHorizontal"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="@+id/chaos_image_view"
-        app:layout_constraintStart_toStartOf="@+id/item_icon_imageview" />
+        app:layout_constraintEnd_toEndOf="@+id/chaos_image"
+        app:layout_constraintStart_toStartOf="@+id/icon" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
