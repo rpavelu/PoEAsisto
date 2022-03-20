@@ -5,7 +5,6 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.ratushny.poeasisto.ninja.data.NinjaListRepository
 import com.ratushny.poeasisto.ninja.data.model.NinjaListItem
-import com.ratushny.poeasisto.ninja.data.model.currencyoverview.NinjaCurrency
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.SupervisorJob

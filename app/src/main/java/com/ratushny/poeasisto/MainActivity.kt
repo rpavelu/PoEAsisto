@@ -10,6 +10,7 @@ import androidx.navigation.ui.NavigationUI
 import com.google.android.material.elevation.SurfaceColors
 import com.mikepenz.materialdrawer.model.SecondaryDrawerItem
 import com.mikepenz.materialdrawer.model.SectionDrawerItem
+import com.mikepenz.materialdrawer.model.interfaces.iconRes
 import com.mikepenz.materialdrawer.model.interfaces.nameRes
 import com.ratushny.poeasisto.ninja.DrawerInterface
 import com.ratushny.poeasisto.ninja.ui.NinjaFragment
@@ -27,39 +28,73 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.main_activity)
 
+        initDrawer()
+
+        val actionBarColor = SurfaceColors.SURFACE_2.getColor(this)
+        window.statusBarColor = actionBarColor
+        window.navigationBarColor = actionBarColor
+
+        //Prevent the drawer from being swiped anywhere other than the startDestination
+        navController.addOnDestinationChangedListener { nc: NavController, nd: NavDestination, args: Bundle? ->
+            if (nd.id == nc.graph.startDestinationId) {
+                drawerLayout.setDrawerLockMode(DrawerLayout.LOCK_MODE_UNLOCKED)
+            } else {
+                drawerLayout.setDrawerLockMode(DrawerLayout.LOCK_MODE_LOCKED_CLOSED)
+            }
+        }
+
+        NavigationUI.setupActionBarWithNavController(this, navController, drawerLayout)
+    }
+
+    override fun onSupportNavigateUp(): Boolean {
+        return NavigationUI.navigateUp(navController, drawerLayout)
+    }
+
+    fun setDrawerListener(drawerInterface: DrawerInterface) {
+        this.drawerInterface = drawerInterface
+    }
+
+    private fun initDrawer() {
         val currencyDrawerItem = SecondaryDrawerItem().apply {
             identifier = 0
             nameRes = R.string.currency
+            iconRes = R.drawable.chaos_pic
         }
 
         val fragmentDrawerItem = SecondaryDrawerItem().apply {
             identifier = 1
             nameRes = R.string.fragments
+            iconRes = R.drawable.framgent_phoenix
         }
 
         val divCardsDrawerItem = SecondaryDrawerItem().apply {
             identifier = 2
             nameRes = R.string.divination_cards
+            iconRes = R.drawable.div_icon
         }
 
         val artifactsDrawerItem = SecondaryDrawerItem().apply {
             identifier = 3
             nameRes = R.string.artifacts
+            iconRes = R.drawable.artifact_icon
         }
 
         val propheciesDrawerItem = SecondaryDrawerItem().apply {
             identifier = 4
             nameRes = R.string.prophecies
+            iconRes = R.drawable.prophecy_icon
         }
 
         val oilsDrawerItem = SecondaryDrawerItem().apply {
             identifier = 5
             nameRes = R.string.oils
+            iconRes = R.drawable.oil_icon
         }
 
         val incubatorsDrawerItem = SecondaryDrawerItem().apply {
             identifier = 6
             nameRes = R.string.incubators
+            iconRes = R.drawable.incubator_icon
         }
 
         val equipmentAndGemsSection = SectionDrawerItem().apply {
@@ -70,36 +105,43 @@ class MainActivity : AppCompatActivity() {
         val uniqueWeaponDrawerItem = SecondaryDrawerItem().apply {
             identifier = 8
             nameRes = R.string.unique_weapons
+            iconRes = R.drawable.unique_weapons_icon
         }
 
         val uniqueArmourDrawerItem = SecondaryDrawerItem().apply {
             identifier = 9
             nameRes = R.string.unique_armours
+            iconRes = R.drawable.unique_armours_icon
         }
 
         val uniqueAccessoriesDrawerItem = SecondaryDrawerItem().apply {
             identifier = 10
             nameRes = R.string.unique_accessories
+            iconRes = R.drawable.unique_accessories_icon
         }
 
         val uniqueFlasksDrawerItem = SecondaryDrawerItem().apply {
             identifier = 11
             nameRes = R.string.unique_flasks
+            iconRes = R.drawable.unique_flasks_icon
         }
 
         val uniqueJewelsDrawerItem = SecondaryDrawerItem().apply {
             identifier = 12
             nameRes = R.string.unique_jewels
+            iconRes = R.drawable.unique_jewels_icon
         }
 
         val skillGemsDrawerItem = SecondaryDrawerItem().apply {
             identifier = 13
             nameRes = R.string.skill_gems
+            iconRes = R.drawable.skill_gems_icon
         }
 
         val clusterJewelsDrawerItem = SecondaryDrawerItem().apply {
             identifier = 14
             nameRes = R.string.cluster_jewels
+            iconRes = R.drawable.cluster_jewels_icon
         }
 
         val atlasSection = SectionDrawerItem().apply {
@@ -110,46 +152,55 @@ class MainActivity : AppCompatActivity() {
         val mapsDrawerItem = SecondaryDrawerItem().apply {
             identifier = 16
             nameRes = R.string.maps
+            iconRes = R.drawable.maps_icon
         }
 
         val blightedMapsDrawerItem = SecondaryDrawerItem().apply {
             identifier = 17
             nameRes = R.string.blighted_maps
+            iconRes = R.drawable.blighted_maps_icon
         }
 
         val blightRavagedMapsDrawerItem = SecondaryDrawerItem().apply {
             identifier = 18
             nameRes = R.string.blight_ravaged_maps
+            iconRes = R.drawable.blight_ravaged_maps_icon
         }
 
         val scourgedMapsDrawerItem = SecondaryDrawerItem().apply {
             identifier = 19
             nameRes = R.string.scourged_maps
+            iconRes = R.drawable.scourged_maps_icon
         }
 
         val uniqueMapsDrawerItem = SecondaryDrawerItem().apply {
             identifier = 20
             nameRes = R.string.unique_maps
+            iconRes = R.drawable.unique_maps_icon
         }
 
         val deliriumOrbsDrawerItem = SecondaryDrawerItem().apply {
             identifier = 21
             nameRes = R.string.delirium_orbs
+            iconRes = R.drawable.delirium_orbs_icon
         }
 
         val invitationsDrawerItem = SecondaryDrawerItem().apply {
             identifier = 22
             nameRes = R.string.invitations
+            iconRes = R.drawable.invitations_icon
         }
 
         val scarabsDrawerItem = SecondaryDrawerItem().apply {
             identifier = 23
             nameRes = R.string.scarabs
+            iconRes = R.drawable.scarabs_icon
         }
 
         val watchstonesDrawerItem = SecondaryDrawerItem().apply {
             identifier = 24
             nameRes = R.string.watchstones
+            iconRes = R.drawable.watchstones_icon
         }
 
         val craftingSection = SectionDrawerItem().apply {
@@ -160,36 +211,43 @@ class MainActivity : AppCompatActivity() {
         val baseTypesDrawerItem = SecondaryDrawerItem().apply {
             identifier = 26
             nameRes = R.string.base_types
+            iconRes = R.drawable.base_types_icon
         }
 
         val fossilsDrawerItem = SecondaryDrawerItem().apply {
             identifier = 27
             nameRes = R.string.fossils
+            iconRes = R.drawable.fossils_icon
         }
 
         val resonatorsDrawerItem = SecondaryDrawerItem().apply {
             identifier = 28
             nameRes = R.string.resonators
+            iconRes = R.drawable.resonators_icon
         }
 
         val helmetEnchantsDrawerItem = SecondaryDrawerItem().apply {
             identifier = 29
             nameRes = R.string.helmet_enchants
+            iconRes = R.drawable.helmet_enchants_icon
         }
 
         val beastsDrawerItem = SecondaryDrawerItem().apply {
             identifier = 30
             nameRes = R.string.beasts
+            iconRes = R.drawable.beasts_icon
         }
 
         val essencesDrawerItem = SecondaryDrawerItem().apply {
             identifier = 31
             nameRes = R.string.essences
+            iconRes = R.drawable.essences_icon
         }
 
         val vialsDrawerItem = SecondaryDrawerItem().apply {
             identifier = 32
             nameRes = R.string.vials
+            iconRes = R.drawable.vials_icon
         }
 
         slider.itemAdapter.add(
@@ -353,28 +411,5 @@ class MainActivity : AppCompatActivity() {
             }
             false
         }
-
-        val actionBarColor = SurfaceColors.SURFACE_2.getColor(this)
-        window.statusBarColor = actionBarColor
-        window.navigationBarColor = actionBarColor
-
-        //Prevent the drawer from being swiped anywhere other than the startDestination
-        navController.addOnDestinationChangedListener { nc: NavController, nd: NavDestination, args: Bundle? ->
-            if (nd.id == nc.graph.startDestinationId) {
-                drawerLayout.setDrawerLockMode(DrawerLayout.LOCK_MODE_UNLOCKED)
-            } else {
-                drawerLayout.setDrawerLockMode(DrawerLayout.LOCK_MODE_LOCKED_CLOSED)
-            }
-        }
-
-        NavigationUI.setupActionBarWithNavController(this, navController, drawerLayout)
-    }
-
-    override fun onSupportNavigateUp(): Boolean {
-        return NavigationUI.navigateUp(navController, drawerLayout)
-    }
-
-    fun setDrawerListener(drawerInterface: DrawerInterface) {
-        this.drawerInterface = drawerInterface
     }
 }

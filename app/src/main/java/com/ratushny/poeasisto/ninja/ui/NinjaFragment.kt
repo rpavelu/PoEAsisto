@@ -19,6 +19,7 @@ import com.ratushny.poeasisto.ninja.DrawerInterface
 import com.ratushny.poeasisto.ninja.data.NinjaListAdapter
 import com.ratushny.poeasisto.ninja.data.NinjaListRepositoryImpl
 import com.ratushny.poeasisto.ninja.data.NinjaNetworkConverterImpl
+import kotlinx.android.synthetic.main.ninja_fragment.*
 import timber.log.Timber
 
 @Suppress("UNCHECKED_CAST")
@@ -108,7 +109,8 @@ class NinjaFragment : Fragment(), DrawerInterface {
             CLUSTER_JEWEL -> actionBar?.title = resources.getString(R.string.cluster_jewels)
             MAP -> actionBar?.title = resources.getString(R.string.maps)
             BLIGHTED_MAP -> actionBar?.title = resources.getString(R.string.blighted_maps)
-            BLIGHT_RAVAGED_MAP -> actionBar?.title = resources.getString(R.string.blight_ravaged_maps)
+            BLIGHT_RAVAGED_MAP -> actionBar?.title =
+                resources.getString(R.string.blight_ravaged_maps)
             SCOURGED_MAP -> actionBar?.title = resources.getString(R.string.scourged_maps)
             UNIQUE_MAP -> actionBar?.title = resources.getString(R.string.unique_maps)
             DELIRIUM_ORB -> actionBar?.title = resources.getString(R.string.delirium_orbs)
@@ -181,10 +183,12 @@ class NinjaFragment : Fragment(), DrawerInterface {
         var result = false
         val connectivityManager =
             context.getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
+
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
             val networkCapabilities = connectivityManager.activeNetwork ?: return false
             val actNw =
                 connectivityManager.getNetworkCapabilities(networkCapabilities) ?: return false
+
             result = when {
                 actNw.hasTransport(NetworkCapabilities.TRANSPORT_WIFI) -> true
                 actNw.hasTransport(NetworkCapabilities.TRANSPORT_CELLULAR) -> true
@@ -203,6 +207,12 @@ class NinjaFragment : Fragment(), DrawerInterface {
 
                 }
             }
+        }
+
+        if (network_error_text != null) {
+            if (result) {
+                network_error_text.visibility = View.GONE
+            } else network_error_text.visibility = View.VISIBLE
         }
 
         return result

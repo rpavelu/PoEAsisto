@@ -1,8 +1,6 @@
 package com.ratushny.poeasisto.ninja.data
 
 import com.ratushny.poeasisto.ninja.data.model.NinjaListItem
-import com.ratushny.poeasisto.ninja.data.model.currencyoverview.NinjaCurrency
-import com.ratushny.poeasisto.ninja.data.model.itemoverview.NinjaItem
 import com.ratushny.poeasisto.ninja.network.NinjaNetworkService
 import timber.log.Timber
 
@@ -16,7 +14,10 @@ class NinjaListRepositoryImpl(
     private val service: NinjaNetworkService = NinjaNetworkService.create()
 ) :
     NinjaListRepository {
-    override suspend fun getNinjaCurrencyListData(league: String, currencyType: String): List<NinjaListItem> {
+    override suspend fun getNinjaCurrencyListData(
+        league: String,
+        currencyType: String
+    ): List<NinjaListItem> {
         Timber.i("Start loading currency data for %s league", league)
         return ninjaNetworkConverter.convertCurrencyList(
             service.getNinjaCurrencyDataService(
@@ -26,7 +27,10 @@ class NinjaListRepositoryImpl(
         )
     }
 
-    override suspend fun getNinjaItemListData(league: String, itemType: String): List<NinjaListItem> {
+    override suspend fun getNinjaItemListData(
+        league: String,
+        itemType: String
+    ): List<NinjaListItem> {
         Timber.i("Start loading item data for %s league", league)
         return ninjaNetworkConverter.convertItemList(
             service.getNinjaItemDataService(

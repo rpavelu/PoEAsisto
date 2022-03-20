@@ -1,11 +1,8 @@
 package com.ratushny.poeasisto.ninja.data
 
 import com.ratushny.poeasisto.ninja.data.model.NinjaListItem
-import com.ratushny.poeasisto.ninja.data.model.currencyoverview.NinjaCurrency
 import com.ratushny.poeasisto.ninja.data.model.currencyoverview.NinjaCurrencyResponse
-import com.ratushny.poeasisto.ninja.data.model.itemoverview.NinjaItem
 import com.ratushny.poeasisto.ninja.data.model.itemoverview.NinjaItemResponse
-import timber.log.Timber
 
 interface NinjaNetworkConverter {
     fun convertCurrencyList(response: NinjaCurrencyResponse): List<NinjaListItem>
@@ -28,7 +25,6 @@ class NinjaNetworkConverterImpl : NinjaNetworkConverter {
     override fun convertItemList(response: NinjaItemResponse): List<NinjaListItem> =
         response.lines
             .map { dtoData ->
-                Timber.d("here is %s", dtoData.name)
                 NinjaListItem(
                     dtoData.name,
                     dtoData.chaosValue,
