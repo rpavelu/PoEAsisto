@@ -12,7 +12,7 @@ interface NinjaNetworkConverter {
 class NinjaNetworkConverterImpl : NinjaNetworkConverter {
     override fun convertCurrencyList(response: NinjaCurrencyResponse): List<NinjaListItem> =
         response.lines
-            .filter { it.receive != null }
+            .filter { it.receive != null && it.currencyTypeName != null && response.currencyDetails[it.receive.get_currency_id - 1] != null && it.receiveSparkLine.totalChange != null }
             .map { dtoData ->
                 NinjaListItem(
                     dtoData.currencyTypeName,
@@ -24,6 +24,7 @@ class NinjaNetworkConverterImpl : NinjaNetworkConverter {
 
     override fun convertItemList(response: NinjaItemResponse): List<NinjaListItem> =
         response.lines
+            .filter { it.name != null && it.chaosValue != null && it.icon != null && it.sparkline.totalChange != null }
             .map { dtoData ->
                 NinjaListItem(
                     dtoData.name,
