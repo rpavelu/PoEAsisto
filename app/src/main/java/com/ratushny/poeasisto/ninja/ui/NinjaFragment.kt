@@ -6,6 +6,7 @@ import android.net.NetworkCapabilities
 import android.os.Build
 import android.os.Bundle
 import android.view.*
+import android.widget.SearchView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
@@ -133,6 +134,18 @@ class NinjaFragment : Fragment(), DrawerInterface {
         loadData()
 
         val adapter = NinjaListAdapter()
+        binding.search.setOnQueryTextListener(object: SearchView.OnQueryTextListener,
+            androidx.appcompat.widget.SearchView.OnQueryTextListener {
+            override fun onQueryTextSubmit(newString: String?): Boolean {
+                return false
+            }
+
+            override fun onQueryTextChange(newString: String?): Boolean {
+                adapter.filter.filter(newString)
+                return false
+            }
+        })
+
         binding.listScreenRecyclerview.adapter = adapter
 
         viewModel.ninjaList.observe(viewLifecycleOwner) {

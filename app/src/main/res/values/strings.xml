@@ -43,4 +43,6 @@
     <string name="beasts">Beasts</string>
     <string name="essences">Essences</string>
     <string name="vials">Vials</string>
+    <string name="search">Search</string>
+    <string name="network_error_text">Try to refresh</string>
 </resources>

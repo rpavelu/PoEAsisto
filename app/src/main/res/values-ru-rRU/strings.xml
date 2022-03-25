@@ -34,4 +34,6 @@
     <string name="beasts">Животные</string>
     <string name="essences">Сущности</string>
     <string name="vials">Фиалы</string>
+    <string name="search">Поиск</string>
+    <string name="network_error_text">Не удалось подключиться к сети\nПроверьте соединение и обновите список</string>
 </resources>

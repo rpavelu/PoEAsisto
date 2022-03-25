@@ -3,6 +3,8 @@ package com.ratushny.poeasisto.ninja.data
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Filter
+import android.widget.Filterable
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
@@ -11,13 +13,17 @@ import com.ratushny.poeasisto.R
 import com.ratushny.poeasisto.ninja.data.model.NinjaListItem
 import java.math.BigDecimal
 import java.math.RoundingMode
+import java.util.*
 import kotlin.math.ln
 import kotlin.math.pow
 
 class NinjaListAdapter :
-    RecyclerView.Adapter<NinjaListAdapter.ViewHolder>() {
+    RecyclerView.Adapter<NinjaListAdapter.ViewHolder>(),
+    Filterable {
 
     private var ninjaItemData: List<NinjaListItem> = emptyList()
+    private var filteredNinjaItemData: List<NinjaListItem> = emptyList()
+
     lateinit var clickListener: ClickListener
 
     fun setOnItemClickListener(clickListener: ClickListener) {
@@ -28,8 +34,39 @@ class NinjaListAdapter :
         fun onClick(pos: Int, view: View)
     }
 
+    override fun getFilter(): Filter {
+        return object : Filter() {
+            override fun performFiltering(constraint: CharSequence?): FilterResults {
+                val charSearch = constraint.toString()
+                ninjaItemData = if (charSearch.isEmpty()) {
+                    filteredNinjaItemData
+                } else {
+                    val resultList: MutableList<NinjaListItem> = ArrayList()
+                    for (row in filteredNinjaItemData) {
+                        if (row.typeName.lowercase().contains(charSearch.lowercase())
+                        ) {
+                            resultList.add(row)
+                        }
+                    }
+                    resultList
+                }
+                val filterResults = FilterResults()
+                filterResults.values = ninjaItemData
+                return filterResults
+            }
+
+            @Suppress("UNCHECKED_CAST")
+            override fun publishResults(constraint: CharSequence?, results: FilterResults?) {
+                ninjaItemData = results?.values as List<NinjaListItem>
+                notifyDataSetChanged()
+            }
+        }
+    }
+
     fun addItemList(itemList: List<NinjaListItem>) {
         ninjaItemData = itemList
+        filteredNinjaItemData = itemList
+
         notifyDataSetChanged()
     }
 
