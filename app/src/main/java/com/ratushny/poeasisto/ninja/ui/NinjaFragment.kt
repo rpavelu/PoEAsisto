@@ -12,19 +12,23 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.findNavController
 import androidx.navigation.ui.NavigationUI
+import com.ratushny.poeasisto.ApplicationComponentHolder
 import com.ratushny.poeasisto.MainActivity
 import com.ratushny.poeasisto.R
 import com.ratushny.poeasisto.databinding.NinjaFragmentBinding
 import com.ratushny.poeasisto.fragments.SettingsFragment
 import com.ratushny.poeasisto.ninja.DrawerInterface
 import com.ratushny.poeasisto.ninja.data.NinjaListAdapter
-import com.ratushny.poeasisto.ninja.data.NinjaListRepositoryImpl
-import com.ratushny.poeasisto.ninja.data.NinjaNetworkConverterImpl
 import kotlinx.android.synthetic.main.ninja_fragment.*
 import timber.log.Timber
+import javax.inject.Inject
+import javax.inject.Provider
 
 @Suppress("UNCHECKED_CAST")
 class NinjaFragment : Fragment(), DrawerInterface {
+
+    @Inject
+    lateinit var viewModelFactory: Provider<NinjaViewModel>
 
     private lateinit var viewModel: NinjaViewModel
     private lateinit var binding: NinjaFragmentBinding
@@ -68,6 +72,13 @@ class NinjaFragment : Fragment(), DrawerInterface {
         const val VIAL = "Vial"
     }
 
+    override fun onAttach(context: Context) {
+        (context.applicationContext as ApplicationComponentHolder)
+            .ninjaComponent
+            .inject(this)
+        super.onAttach(context)
+    }
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -81,11 +92,7 @@ class NinjaFragment : Fragment(), DrawerInterface {
 
         viewModel = ViewModelProvider(this, object : ViewModelProvider.Factory {
             override fun <T : ViewModel> create(modelClass: Class<T>): T {
-                return NinjaViewModel(
-                    NinjaListRepositoryImpl(
-                        NinjaNetworkConverterImpl()
-                    )
-                ) as T
+                return viewModelFactory.get() as T
             }
         })[NinjaViewModel::class.java]
 
@@ -134,7 +141,7 @@ class NinjaFragment : Fragment(), DrawerInterface {
         loadData()
 
         val adapter = NinjaListAdapter()
-        binding.search.setOnQueryTextListener(object: SearchView.OnQueryTextListener,
+        binding.search.setOnQueryTextListener(object : SearchView.OnQueryTextListener,
             androidx.appcompat.widget.SearchView.OnQueryTextListener {
             override fun onQueryTextSubmit(newString: String?): Boolean {
                 return false

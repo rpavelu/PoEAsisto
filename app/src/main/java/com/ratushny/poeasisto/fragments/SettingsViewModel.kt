@@ -10,9 +10,10 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.SupervisorJob
 import kotlinx.coroutines.launch
 import timber.log.Timber
+import javax.inject.Inject
 import kotlin.coroutines.CoroutineContext
 
-class SettingsViewModel(private val leagueListRepository: LeagueListRepository) : ViewModel(),
+class SettingsViewModel @Inject constructor(private val leagueListRepository: LeagueListRepository) : ViewModel(),
     CoroutineScope {
 
     private val _leagueList = MutableLiveData<LeagueList>()

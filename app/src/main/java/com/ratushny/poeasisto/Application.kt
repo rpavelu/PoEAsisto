@@ -3,10 +3,28 @@ package com.ratushny.poeasisto
 import android.app.Application
 import android.content.Context
 import androidx.appcompat.app.AppCompatDelegate
+import com.ratushny.poeasisto.di.RetrofitUrl
 import com.ratushny.poeasisto.fragments.SettingsFragment
 import timber.log.Timber
 
-class Application : Application() {
+class Application : Application(), ApplicationComponentHolder {
+    override val daggerComponent: ApplicationComponent by lazy {
+        DaggerApplicationComponent.create()
+    }
+
+    override val ninjaComponent: NinjaComponent by lazy {
+        DaggerNinjaComponent.builder()
+            .url(RetrofitUrl("https://poe.ninja/api/data/"))
+            .appComponent(daggerComponent)
+            .build()
+    }
+
+    override val leagueComponent: LeagueComponent by lazy {
+        DaggerLeagueComponent.builder()
+            .url(RetrofitUrl("http://api.pathofexile.com/"))
+            .appComponent(daggerComponent)
+            .build()
+    }
 
     override fun onCreate() {
         super.onCreate()
@@ -28,4 +46,10 @@ class Application : Application() {
             AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
         }
     }
+}
+
+interface ApplicationComponentHolder {
+    val daggerComponent: ApplicationComponent
+    val ninjaComponent: NinjaComponent
+    val leagueComponent: LeagueComponent
 }

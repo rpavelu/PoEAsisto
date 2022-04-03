@@ -3,13 +3,14 @@ package com.ratushny.poeasisto.ninja.data
 import com.ratushny.poeasisto.ninja.data.model.NinjaListItem
 import com.ratushny.poeasisto.ninja.data.model.currencyoverview.NinjaCurrencyResponse
 import com.ratushny.poeasisto.ninja.data.model.itemoverview.NinjaItemResponse
+import javax.inject.Inject
 
 interface NinjaNetworkConverter {
     fun convertCurrencyList(response: NinjaCurrencyResponse): List<NinjaListItem>
     fun convertItemList(response: NinjaItemResponse): List<NinjaListItem>
 }
 
-class NinjaNetworkConverterImpl : NinjaNetworkConverter {
+class NinjaNetworkConverterImpl @Inject constructor() : NinjaNetworkConverter {
     override fun convertCurrencyList(response: NinjaCurrencyResponse): List<NinjaListItem> =
         response.lines
             .filter { it.receive != null && it.currencyTypeName != null && response.currencyDetails[it.receive.get_currency_id - 1] != null && it.receiveSparkLine.totalChange != null }

@@ -3,15 +3,16 @@ package com.ratushny.poeasisto.ninja.data
 import com.ratushny.poeasisto.ninja.data.model.NinjaListItem
 import com.ratushny.poeasisto.ninja.network.NinjaNetworkService
 import timber.log.Timber
+import javax.inject.Inject
 
 interface NinjaListRepository {
     suspend fun getNinjaCurrencyListData(league: String, currencyType: String): List<NinjaListItem>
     suspend fun getNinjaItemListData(league: String, itemType: String): List<NinjaListItem>
 }
 
-class NinjaListRepositoryImpl(
+class NinjaListRepositoryImpl @Inject constructor(
     private val ninjaNetworkConverter: NinjaNetworkConverter,
-    private val service: NinjaNetworkService = NinjaNetworkService.create()
+    private val service: NinjaNetworkService
 ) :
     NinjaListRepository {
     override suspend fun getNinjaCurrencyListData(

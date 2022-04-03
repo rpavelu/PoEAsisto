@@ -12,15 +12,4 @@ interface LeagueService {
     suspend fun getLeagueService(
         @Query("compact") type: Boolean
     ): LeagueList
-
-    companion object Factory {
-        fun create(): LeagueService {
-            val retrofit = Retrofit.Builder()
-                .baseUrl("http://api.pathofexile.com/")
-                .addConverterFactory(GsonConverterFactory.create())
-                .build()
-
-            return retrofit.create(LeagueService::class.java)
-        }
-    }
 }

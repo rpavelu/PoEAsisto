@@ -9,12 +9,17 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.preference.DropDownPreference
 import androidx.preference.PreferenceFragmentCompat
 import androidx.preference.SwitchPreference
+import com.ratushny.poeasisto.ApplicationComponentHolder
 import com.ratushny.poeasisto.R
-import com.ratushny.poeasisto.league.LeagueListRepositoryImpl
 import timber.log.Timber
+import javax.inject.Inject
+import javax.inject.Provider
 
 @Suppress("UNCHECKED_CAST")
 class SettingsFragment : PreferenceFragmentCompat() {
+
+    @Inject
+    lateinit var settingsViewModelProvider: Provider<SettingsViewModel>
 
     private lateinit var viewModel: SettingsViewModel
     private lateinit var prefs: SharedPreferences
@@ -26,16 +31,20 @@ class SettingsFragment : PreferenceFragmentCompat() {
         const val PICKED_LEAGUE_PREF_KEY = "picked_league"
     }
 
+    override fun onAttach(context: Context) {
+        (context.applicationContext as ApplicationComponentHolder)
+            .leagueComponent
+            .inject(this)
+        super.onAttach(context)
+    }
+
     override fun onCreatePreferences(savedInstanceState: Bundle?, rootKey: String?) {
         setPreferencesFromResource(R.xml.preferences, rootKey)
         prefs = context?.getSharedPreferences("settings_prefs", Context.MODE_PRIVATE) ?: return
 
         viewModel = ViewModelProvider(this, object : ViewModelProvider.Factory {
             override fun <T : ViewModel> create(modelClass: Class<T>): T {
-                return SettingsViewModel(LeagueListRepositoryImpl())
-                    .also {
-                        it.getLeagueList()
-                    } as T
+                return settingsViewModelProvider.get().also { it.getLeagueList() } as T
             }
         })[SettingsViewModel::class.java]
 
